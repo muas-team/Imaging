@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/imgBTStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/bluetooth_black" />
+
+    <TextView
+        android:id="@+id/textBTStatus"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/imgAPIStatus"
+        android:layout_toRightOf="@+id/imgBTStatus"
+        android:gravity="center_vertical"
+        android:text="Bluetooth Status: N/A" />
+
+    <ImageView
+        android:id="@+id/imgAPIStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/api_status" />
+    
+    <TextView
+        android:id="@+id/textAPIStatus"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/imgAPIStatus"
+        android:gravity="center_vertical"
+        android:text="API Status: N/A" />
+
+    <ImageView
+        android:id="@+id/imgCameraStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@+id/imgAPIStatus"
+        android:src="@drawable/camera_status" />
+
+    <TextView
+        android:id="@+id/textCameraStatus"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/textAPIStatus"
+        android:layout_toLeftOf="@+id/imgAPIStatus"
+        android:layout_toRightOf="@id/imgCameraStatus"
+        android:gravity="center_vertical"
+        android:text="Camera Status: N/A" />
+    
+    <TextView
+        android:id="@+id/textBTSyncStatus"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/textAPIStatus"
+        android:layout_toRightOf="@id/imgBTConnectStatus"
+        android:gravity="center_vertical"
+        android:text="Synced with: N/A" />
+
+	<TextView
+        android:id="@+id/textBTConnectStatus"
+        android:layout_width="fill_parent"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/textBTSyncStatus"
+        android:layout_toRightOf="@id/imgBTConnectStatus"
+        android:gravity="center_vertical"
+        android:text="Connection Status: N/A" />
+    
+    <ScrollView
+        android:id="@+id/scrollTxt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/textBTConnectStatus"
+        android:background="@color/LightGrey" >
+
+        <TextView
+            android:id="@+id/consoleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imgBTConnectStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@id/imgAPIStatus"
+        android:layout_toRightOf="@id/textCameraStatus"
+        android:src="@drawable/bluetooth_connect" />
+
+</RelativeLayout>

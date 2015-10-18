@@ -1,0 +1,2 @@
+1	2	3	4	5	6	7	8	9
+01	N1W1Nsquareredfwhitetarget1.jpg	02	N2W2Ncircleorangedblacktarget2.jpg	03	N3W3Ntriangleyellowgpurpletarget3.jpg	04	N4W4Nhexagongreen6bluetarget4.jpg	05	N5W5Npentagonbluedgreentarget5.jpg	06	N6W6Ncrosspurple3yellowtarget6.jpg	07	N7W7Nstarblackjorangetarget7.jpg	08	N8W8Nsquarewhite8redtarget8.jpg	

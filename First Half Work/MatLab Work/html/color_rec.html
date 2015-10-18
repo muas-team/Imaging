@@ -1,0 +1,226 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Color Recognition</title><meta name="generator" content="MATLAB 8.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-05-12"><meta name="DC.source" content="color_rec.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Color Recognition</h1><p>uses color_picker.m to display colors within an image</p><pre class="codeinput"><span class="keyword">function</span> [ colors ] = color_rec( filename )
+
+X = imread(filename);
+I = X(1:end, 1:end, 1:3);
+I2 = rgb2hsv(I);
+
+<span class="comment">% figure</span>
+<span class="comment">% imshow(X)</span>
+I2_1 = I2(:,:,1);
+I2_2 = I2(:,:,2);
+I2_3 = I2(:,:,3);
+
+figure(<span class="string">'Name'</span>,<span class="string">'Histograms of Image Pixels'</span>)
+
+subplot(2,2,1)
+histogram(I2_1)
+title(<span class="string">'Auto-binned Hue'</span>)
+
+subplot(2,2,2)
+histogram(I2_1,[1*10^-10,0.01,0.125,0.3,0.6,0.75,0.9,1])
+title(<span class="string">'Hue Binned Based on Color Wheel'</span>)
+
+subplot(2,2,3)
+histogram(I2_2)
+title(<span class="string">'Saturation'</span>)
+
+subplot(2,2,4)
+histogram(I2_3)
+title(<span class="string">'Value'</span>)
+
+a = color_picker(I2_1,I2_3);
+colors = [strcat(<span class="string">'Background'</span>,<span class="string">': '</span>,a(1));strcat(<span class="string">'Shape Color'</span>,<span class="string">': '</span>,a(2));strcat(<span class="string">'Alphanumeric Color'</span>,<span class="string">': '</span>, a(3))];
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> [ colors ] = color_picker( hue, val)
+<span class="comment">%color_picker Chooses the top three colors in an image using the hue and</span>
+<span class="comment">%value channels</span>
+
+
+counth = histcounts(hue,[0,1*10^-10,0.01,0.125,0.3,0.6,0.75,0.9,1]);
+counth = [counth;1 2 3 4 5 6 7 8];
+counth = counth.';
+sorted_h = sortrows(counth);
+
+countv = histcounts(val,[0,0.1,0.8,1]);
+countv = [countv;1 2 3];
+countv = countv.';
+sorted_v = sort(countv);
+
+chm = sorted_h(6:8,2);
+cvm = sorted_v(:,2);
+
+colors = {<span class="string">''</span>;<span class="string">''</span>;<span class="string">''</span>};
+
+<span class="keyword">for</span> i = 1:3
+    <span class="keyword">if</span> (chm(4-i) == 2)
+        colors(i) = {<span class="string">'Red'</span>};
+    <span class="keyword">elseif</span> (chm(4-i) == 3)
+        colors(i) = {<span class="string">'Orange'</span>};
+    <span class="keyword">elseif</span> (chm(4-i) == 4)
+        colors(i) = {<span class="string">'Yellow'</span>};
+    <span class="keyword">elseif</span> (chm(4-i) == 5)
+        colors(i) = {<span class="string">'Green'</span>};
+    <span class="keyword">elseif</span> (chm(4-i) == 6)
+        colors(i) = {<span class="string">'Blue'</span>};
+    <span class="keyword">elseif</span> (chm(4-i) == 7)
+        colors(i) = {<span class="string">'Purple'</span>};
+    <span class="keyword">elseif</span> (cvm(4-i) == 1)
+        colors(i) = {<span class="string">'Black'</span>};
+    <span class="keyword">elseif</span> (cvm(4-i) == 3)
+        colors(i) = {<span class="string">'White'</span>};
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre><pre class="codeoutput error">Error using color_rec (line 7)
+Not enough input arguments.
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2014b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Color Recognition
+%
+% uses color_picker.m to display colors within an image
+
+function [ colors ] = color_rec( filename )
+
+X = imread(filename);
+I = X(1:end, 1:end, 1:3);
+I2 = rgb2hsv(I);
+
+% figure
+% imshow(X)
+I2_1 = I2(:,:,1);
+I2_2 = I2(:,:,2);
+I2_3 = I2(:,:,3);
+
+figure('Name','Histograms of Image Pixels')
+
+subplot(2,2,1)
+histogram(I2_1)
+title('Auto-binned Hue')
+
+subplot(2,2,2)
+histogram(I2_1,[1*10^-10,0.01,0.125,0.3,0.6,0.75,0.9,1])
+title('Hue Binned Based on Color Wheel')
+
+subplot(2,2,3)
+histogram(I2_2)
+title('Saturation')
+
+subplot(2,2,4)
+histogram(I2_3)
+title('Value')
+
+a = color_picker(I2_1,I2_3);
+colors = [strcat('Background',': ',a(1));strcat('Shape Color',': ',a(2));strcat('Alphanumeric Color',': ', a(3))];
+end
+
+function [ colors ] = color_picker( hue, val)
+%color_picker Chooses the top three colors in an image using the hue and
+%value channels
+
+
+counth = histcounts(hue,[0,1*10^-10,0.01,0.125,0.3,0.6,0.75,0.9,1]);
+counth = [counth;1 2 3 4 5 6 7 8];
+counth = counth.';
+sorted_h = sortrows(counth);
+
+countv = histcounts(val,[0,0.1,0.8,1]);
+countv = [countv;1 2 3];
+countv = countv.';
+sorted_v = sort(countv);
+
+chm = sorted_h(6:8,2);
+cvm = sorted_v(:,2);
+
+colors = {'';'';''};
+
+for i = 1:3
+    if (chm(4-i) == 2)
+        colors(i) = {'Red'};
+    elseif (chm(4-i) == 3)
+        colors(i) = {'Orange'};
+    elseif (chm(4-i) == 4)
+        colors(i) = {'Yellow'};
+    elseif (chm(4-i) == 5)
+        colors(i) = {'Green'};
+    elseif (chm(4-i) == 6)
+        colors(i) = {'Blue'};
+    elseif (chm(4-i) == 7)
+        colors(i) = {'Purple'};
+    elseif (cvm(4-i) == 1)
+        colors(i) = {'Black'};
+    elseif (cvm(4-i) == 3)
+        colors(i) = {'White'};
+    end
+end
+end
+##### SOURCE END #####
+--></body></html>

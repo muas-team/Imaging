@@ -1,0 +1,4 @@
+targID	alphas	confs
+1	A	0.8933614
+2	:	0.6920044
+3	 	NaN

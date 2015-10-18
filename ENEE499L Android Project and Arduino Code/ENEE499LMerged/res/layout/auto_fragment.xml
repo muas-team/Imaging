@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonToggleBTComms"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:text="Enable BT Communication" />
+
+    <Button
+        android:id="@+id/buttonSimCamRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="Simulate Camera Request" />
+
+    <SurfaceView
+        android:id="@+id/surfaceView1"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/buttonSimCamRequest"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp" />
+
+    <ImageView
+        android:id="@+id/imageLastProcessed"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/buttonSimCamRequest"
+        android:layout_marginLeft="5dp"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/imageLastProcessed"
+        android:layout_below="@+id/imageLastProcessed"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:text="Last Command Sent" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/surfaceView1"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/textView2"
+        android:gravity="center_horizontal"
+        android:text="Last Command Received" />
+
+    <TextView
+        android:id="@+id/textLastCommandSent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/textView2"
+        android:layout_below="@+id/TextView01"
+        android:gravity="center_horizontal"
+        android:text="N/A" />
+
+    <TextView
+        android:id="@+id/textLastCommandReceived"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView01"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/textLastCommandSent"
+        android:gravity="top|center_horizontal"
+        android:text="N/A" />
+
+    <EditText
+        android:id="@+id/roomSearchText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="Search for..."
+        android:inputType="number" >
+
+    </EditText>
+
+    <ToggleButton
+        android:id="@+id/buttonToggleBTComms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/roomSearchText"
+        android:layout_centerHorizontal="true"
+        android:text="ToggleButton" />
+
+    <TextView
+        android:id="@+id/lastStringRead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/textLastCommandSent"
+        android:layout_below="@+id/textLastCommandSent"
+        android:gravity="center_horizontal"
+        android:text="" />
+
+</RelativeLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ENEE499LMerged</string>
+    <string name="title_section1">Setup/Logs</string>
+    <string name="title_section2">Manual Mode</string>
+    <string name="title_section3">Auto Mode</string>
+    <string name="action_settings">Settings</string>
+    <string name="button_snapshot">Take Snapshot</string>
+    <string name="button_selectPhoto">Select Photo</string>
+    <string name="lastOCR">Last OCR Results here</string>
+    <string name="checkbox_edge">Perform edge detection</string>
+
+</resources>
